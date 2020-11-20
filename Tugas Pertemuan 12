@@ -1,0 +1,37 @@
+kata = ['','one','two','three','four','five','six','seven','eight','nine']
+teens = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eightteen','nineteen']
+decades = ['','','twenty','thirty','fourty','fifty','sixty','seventy','eighty','ninety',]
+
+def terbilang(n):
+    if n < 10 :
+        return kata[n]
+    elif n >= 1_000_000_000:
+        return terbilang(n // 1_000_000_000) + " billion " + terbilang(n % 1_000_000_000)
+    elif n >= 1_000_000 :
+        return terbilang(n // 1_000_000) + " million " + terbilang(n % 1_000_000)
+    elif n >= 1_000 :
+        return terbilang(n // 1_000) + " thousand " + terbilang(n % 1_000)
+    elif n >= 100 :
+        return terbilang(n // 100) + " hundred " + terbilang(n % 100)
+    elif 10 <= n <= 19 :
+        return teens[n-10]
+    elif n >= 20 :
+        return decades[n // 10] + " " + terbilang(n % 10)
+
+    else :
+        if n == 10 :
+            return "ten"
+        elif n == 11 :
+            return "eleven"
+        else :
+            return     
+
+import os
+while True:
+    os.system('cls')
+    try:
+        n = int(input('Input Number ? '))
+        print(f'{n:,} = {terbilang(n)}')
+    except:
+        print('Wrong input ... Check Again')
+    os.system('pause')
